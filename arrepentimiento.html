@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Botón de arrepentimiento · Anotá</title>
+<meta name="description" content="Pedí la revocación de tu compra dentro de los 10 días.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="top">
+  <div class="col">
+    <a class="marca" href="index.html"><img src="logo-claro.svg" alt="">Anotá</a>
+    <nav aria-label="Principal">
+      <a href="index.html#que-hace">Qué hace</a>
+      <a href="index.html#precio">Precio</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </div>
+</header>
+<main class="doc"><div class="col">
+<h1>Botón de arrepentimiento</h1>
+<p>Si contrataste la suscripción de Anotá hace 10 días corridos o menos, podés arrepentirte sin costo y sin dar explicaciones (artículo 34 de la Ley 24.240). Te devolvemos el total pagado, por el mismo medio de pago.</p>
+<p class="aviso">Durante la beta gratuita no hay nada que revocar, porque no se cobra. Este formulario sirve para cuando empiece la suscripción.</p>
+<form class="formu" id="formu">
+<label for="nombre">Nombre y apellido<input id="nombre" name="nombre" required autocomplete="name"></label>
+<label for="correo">Correo con el que usás Anotá<input id="correo" name="correo" type="email" required autocomplete="email"></label>
+<label for="fecha">Fecha en que contrataste<input id="fecha" name="fecha" type="date" required></label>
+<button class="btn btn-acento" type="submit">Pedir el arrepentimiento</button>
+<p class="nota">Al tocar el botón se genera tu número de trámite y se abre tu correo con el pedido listo para enviar. Si no se abre, mandalo a anotagendas@gmail.com con el número.</p>
+</form>
+<div class="resultado" id="resultado" hidden></div></div></main>
+<footer>
+  <div class="col">
+    <div class="pie-arriba">
+      <div>
+        <a class="marca" href="index.html"><img src="logo-claro.svg" alt="">Anotá</a>
+        <p class="lema">Tu semana, a tu ritmo.</p>
+      </div>
+      <div class="pie-links">
+        <div><strong>Producto</strong><a href="index.html#que-hace">Qué hace</a><a href="index.html#precio">Precio</a><a href="ayuda.html">Ayuda</a></div>
+        <div><strong>Legal</strong><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos de uso</a></div>
+        <div><strong>Contacto</strong><span>anotagendas@gmail.com</span></div>
+      </div>
+    </div>
+    <div class="legales">
+      <a class="arrep" href="arrepentimiento.html">Botón de arrepentimiento</a>
+      <a href="baja.html">Botón de baja</a>
+      <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener">Defensa de las y los consumidores</a>
+    </div>
+    <p class="chico">© 2026 Anotá. Google Sheets y Google Calendar son marcas de Google LLC.</p>
+  </div>
+</footer>
+<script>
+document.getElementById('formu').addEventListener('submit',function(e){
+  e.preventDefault();
+  var f=e.target, n='Arr'.toUpperCase()+'-'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,7).toUpperCase();
+  var campos=[].slice.call(f.querySelectorAll('input,textarea')).map(function(i){return i.previousSibling.textContent.trim()+': '+i.value;}).join('\n');
+  var r=document.getElementById('resultado');
+  r.textContent='';
+  var b=document.createElement('strong'); b.textContent='Tu número de trámite es '+n+'. ';
+  r.appendChild(b); r.appendChild(document.createTextNode('Dentro de las 24 horas te confirmamos por correo que recibimos tu pedido, con este mismo número.'));
+  r.hidden=false;
+  location.href='mailto:anotagendas@gmail.com?subject='+encodeURIComponent('Arrepentimiento '+n)+'&body='+encodeURIComponent('Número de trámite: '+n+'\n'+campos);
+});
+</script>
+</body>
+</html>
