@@ -48,12 +48,14 @@
 <tr><td>Archivos de Google Drive que usás con Anotá</td><td>Guardar los comprobantes de pago en una carpeta de tu Drive y leer los extractos bancarios en PDF que subís para importar pagos. No puede ver ni cambiar el resto de tus archivos.</td></tr>
 <tr><td>Enviar correos en tu nombre</td><td>Mandar desde tu cuenta las confirmaciones de turno y avisos a tus clientes, y los avisos para vos. Anotá no lee tu correo.</td></tr>
 <tr><td>Ver tu dirección de correo</td><td>Saber qué cuenta entró, para abrir tu agenda y no la de otra persona.</td></tr>
+<tr><td>Permitir que esta aplicación se ejecute cuando no estás presente</td><td>Solo se usa si activás las reservas online. Deja que tu cuenta revise una vez por minuto si alguien pidió un turno y lo anote en tu agenda, aunque no tengas Anotá abierta. Si no activás las reservas, Anotá no hace nada por su cuenta. Al apagarlas, esa tarea se borra.</td></tr>
 <tr><td>Conectarse a un servicio externo</td><td>Pedirle a Google Drive el texto de los extractos en PDF que subís, para reconocer los pagos. Anotá solo se conecta con servicios de Google: no envía tus datos a otras empresas.</td></tr>
 </table></div>
 
 <h2>4. Dónde quedan los datos</h2>
 <p>La información de tu agenda queda en tu planilla, tu Google Calendar y tu Google Drive, bajo tu cuenta de Google. Anotá no tiene bases de datos propias con esa información. Google la almacena según su propia <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">política de privacidad</a>.</p>
 <p>Para recordar cuál es tu planilla, Anotá guarda su identificador asociado a tu cuenta, dentro de los servicios de Google. No guarda el contenido. Para que la agenda cargue más rápido, guarda también por unos minutos una copia temporal de tus horarios ocupados en la memoria caché de Google, separada para cada cuenta, que se borra sola.</p>
+<p>Si activás las reservas online, Anotá guarda además el nombre que elegiste para tu link (anota.ar/r/…) junto con un código que se calcula a partir de tu correo, para saber que ese link es tuyo. El correo no se guarda.</p>
 <p>Cuando algo falla, Google registra información técnica del error (por ejemplo, qué función falló y a qué hora) en los registros del proyecto de Anotá. Esos registros se conservan por un tiempo limitado y los usamos solo para encontrar y corregir errores.</p>
 
 <h2>5. Datos de tus clientes</h2>
@@ -61,8 +63,15 @@
 <p>Vos decidís qué datos cargás y para qué. Por eso, frente a tus clientes, sos responsable de esa información según la Ley 25.326 de Protección de Datos Personales. Te recomendamos cargar solo lo necesario para organizar tus turnos y cobros, y avisarles a tus clientes que usás Anotá para eso.</p>
 
 <h2>6. Página de reservas</h2>
-<p>Si activás las reservas online, tus clientes pueden pedir turnos desde una página de Anotá, sin necesidad de cuenta de Google. Lo que escriben (nombre, teléfono, correo, el turno elegido y, si corresponde, el comprobante de pago) se envía a tu planilla y a tu Drive. Anotá solo procesa esos datos para registrar la reserva y no se queda con una copia.</p>
-<p>Para que tus clientes puedan ver sus turnos o cambiarlos, la página les pide su teléfono y su correo, y los compara con los que figuran en tu planilla.</p>
+<p>Si activás las reservas online, tus clientes pueden pedir turnos desde una página de Anotá (anota.ar/r/ y el nombre que elijas), sin necesidad de cuenta de Google. Esa página no tiene acceso a tu agenda. Funciona así:</p>
+<ul>
+<li><b>Horarios libres.</b> Tu cuenta de Google le pasa a la página qué horarios tenés libres, sin nombres ni ningún dato de tus clientes. Es lo único que puede ver cualquiera que abra tu link.</li>
+<li><b>Pedidos.</b> Lo que escribe tu cliente (nombre, teléfono, correo, el turno elegido y, si corresponde, la foto del comprobante) queda en espera en una memoria temporal de Google hasta que tu cuenta lo retira, normalmente en menos de un minuto. En ese momento se borra de ahí y se guarda en tu planilla, tu calendario y tu Drive. Si tu cuenta no lo retira, se borra solo a las 6 horas como máximo.</li>
+<li><b>Respuestas.</b> La respuesta a cada pedido vuelve cifrada con una clave que genera el celular de tu cliente, de modo que solo ese celular puede leerla, y se borra a los 20 minutos.</li>
+<li><b>Mis turnos.</b> Para que cada cliente vea sus próximos turnos y lo que debe sin esperar, tu cuenta deja esa información cifrada en la misma memoria temporal. Lo de cada cliente se abre solo con una clave que queda guardada en su celular después de entrar con su teléfono y su correo; el aviso de deuda al reservar se abre solo con ese mismo teléfono o correo. Se renueva sola y se borra, como máximo, a las 6 horas.</li>
+</ul>
+<p>Anotá hace de puente entre la página y tu agenda: no tiene una base de datos de reservas ni de clientes, no puede leer lo que viaja cifrado y no conserva nada una vez que tu cuenta lo retira. En el celular de tu cliente queda guardada solo esa clave, para no pedirle sus datos cada vez; se borra si toca "Salir" o si borra los datos del navegador.</p>
+<p>Para entrar a ver sus turnos o cambiarlos, la página le pide a tu cliente su teléfono y su correo, y tu cuenta los compara con los que figuran en tu planilla.</p>
 
 <h2>7. Lo que no hacemos</h2>
 <ul>
