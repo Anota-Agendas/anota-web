@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anotá</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<script>
+// anota.ar/r/<nombre> abre la página de reservas de quien eligió ese nombre.
+var RESERVAS = 'https://script.google.com/macros/s/AKfycbxOY_FwcL7H9xfOXy_FgYYplZKiR585nPVk55fP2JfVmOn5IHys5KdaCBkuw66qip8nRA/exec';
+var destino = '', esLink = false;
+(function () {
+  var m = /^\/r(?:\/([^\/]*))?\/?$/i.exec(location.pathname);
+  if (!m) return;
+  esLink = true;
+  var nombre = '';
+  try { nombre = decodeURIComponent(m[1] || ''); } catch (e) {}
+  nombre = nombre.trim().toLowerCase();
+  if (/^[a-z0-9][a-z0-9-]{1,38}[a-z0-9]$/.test(nombre) && nombre.indexOf('--') < 0) {
+    destino = RESERVAS + '?r=' + nombre;
+    location.replace(destino);
+  }
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+<header class="top">
+  <div class="col">
+    <a class="marca" href="/index.html"><img src="/logo-claro.svg" alt="">Anotá</a>
+    <nav aria-label="Principal">
+      <a href="/index.html#que-hace">Qué hace</a>
+      <a href="/index.html#precio">Precio</a>
+      <a href="/ayuda.html">Ayuda</a>
+    </nav>
+  </div>
+</header>
+<main class="doc"><div class="col">
+<div id="yendo" hidden>
+<h1>Abriendo la agenda…</h1>
+<p>Si no se abre sola, <a id="seguir" href="/">tocá acá para reservar</a>.</p>
+</div>
+<div id="malLink" hidden>
+<h1>Ese link de reservas no existe</h1>
+<p>Revisá que esté bien escrito, o pedile el link de nuevo a quien te lo pasó.</p>
+<p><a href="/">Ir al inicio de Anotá</a></p>
+</div>
+<div id="nada" hidden>
+<h1>No encontramos esa página</h1>
+<p>Puede que el link esté mal escrito o que la página ya no exista.</p>
+<p><a href="/">Ir al inicio de Anotá</a></p>
+</div>
+<noscript>
+<h1>No encontramos esa página</h1>
+<p>Si venías a reservar, activá JavaScript en el navegador y volvé a abrir el link. <a href="/">Ir al inicio de Anotá</a></p>
+</noscript>
+</div></main>
+<footer>
+  <div class="col">
+    <div class="pie-arriba">
+      <div>
+        <a class="marca" href="/index.html"><img src="/logo-claro.svg" alt="">Anotá</a>
+        <p class="lema">Tu semana, a tu ritmo.</p>
+      </div>
+      <div class="pie-links">
+        <div><strong>Producto</strong><a href="/app/">Entrar</a><a href="/index.html#que-hace">Qué hace</a><a href="/index.html#precio">Precio</a><a href="/ayuda.html">Ayuda</a></div>
+        <div><strong>Legal</strong><a href="/privacidad.html">Privacidad</a><a href="/terminos.html">Términos de uso</a></div>
+        <div><strong>Contacto</strong><span>anotagendas@gmail.com</span></div>
+      </div>
+    </div>
+    <div class="legales">
+      <a class="arrep" href="/arrepentimiento.html">Botón de arrepentimiento</a>
+      <a href="/baja.html">Botón de baja</a>
+      <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener">Defensa de las y los consumidores</a>
+    </div>
+    <p class="chico">© 2026 Anotá. Google Sheets y Google Calendar son marcas de Google LLC.</p>
+  </div>
+</footer>
+<script>
+if (destino) {
+  document.title = 'Reservar · Anotá';
+  document.getElementById('seguir').href = destino;
+  document.getElementById('yendo').hidden = false;
+} else {
+  document.title = 'Página no encontrada · Anotá';
+  document.getElementById(esLink ? 'malLink' : 'nada').hidden = false;
+}
+</script>
+</body>
+</html>
