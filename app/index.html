@@ -1,19 +1,32 @@
 <!doctype html>
-<html lang="es-AR">
+<html lang="es-AR" class="pagina-marco">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Entrar · Anotá</title>
+<title>Anotá</title>
 <meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbzwaQiQ5L5yRTbaCGp66Nf1Csx-1I41_OgZkL6Ti5h-w5CDOh3zadcCVovk3POWGGdUEw/exec">
-<link rel="icon" href="../logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../estilos.css">
-<script>location.replace('https://script.google.com/macros/s/AKfycbzwaQiQ5L5yRTbaCGp66Nf1Csx-1I41_OgZkL6Ti5h-w5CDOh3zadcCVovk3POWGGdUEw/exec');</script>
+<meta name="theme-color" content="#0F4C5C">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/estilos.css">
+<link rel="stylesheet" href="/marco.css">
+<script src="/marco.js"></script>
 </head>
 <body>
-<main class="doc"><div class="col">
-<h1>Entrando a Anotá…</h1>
-<p>Si no se abre sola, <a href="https://script.google.com/macros/s/AKfycbzwaQiQ5L5yRTbaCGp66Nf1Csx-1I41_OgZkL6Ti5h-w5CDOh3zadcCVovk3POWGGdUEw/exec">tocá acá para entrar con tu cuenta de Google</a>.</p>
-</div></main>
+<div id="cargando" class="cargando" role="status">
+  <img src="/logo.svg" alt="" width="56" height="56">
+  <p><b>Abriendo tu agenda…</b></p>
+  <p id="tarda" class="tarda" hidden>¿Tarda mucho? <a id="directo" href="https://script.google.com/macros/s/AKfycbzwaQiQ5L5yRTbaCGp66Nf1Csx-1I41_OgZkL6Ti5h-w5CDOh3zadcCVovk3POWGGdUEw/exec">Abrila de la forma común</a></p>
+</div>
+<noscript><p class="cargando">Para entrar a Anotá, activá JavaScript en el navegador.</p></noscript>
+<script>
+// anota.ar/app muestra la agenda adentro de esta página (la barra dice anota.ar). Si el navegador no lo deja, la abre como siempre.
+abrirAnota({
+  exec: 'https://script.google.com/macros/s/AKfycbzwaQiQ5L5yRTbaCGp66Nf1Csx-1I41_OgZkL6Ti5h-w5CDOh3zadcCVovk3POWGGdUEw/exec',
+  buscar: location.search,
+  nombre: 'agenda',
+  sinMarco: sinSesionEnMarco(),
+  ruta: function (buscar) { return '/app/' + buscar; }
+});
+</script>
 </body>
 </html>

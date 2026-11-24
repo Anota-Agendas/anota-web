@@ -18,17 +18,24 @@ var destino = '', esLink = false;
   try { nombre = decodeURIComponent(m[1] || ''); } catch (e) {}
   nombre = nombre.trim().toLowerCase();
   if (/^[a-z0-9][a-z0-9-]{1,38}[a-z0-9]$/.test(nombre) && nombre.indexOf('--') < 0) {
-    destino = RESERVAS + '?r=' + nombre;
-    location.replace(destino);
+    destino = '?r=' + nombre;
+    document.documentElement.className += ' pagina-marco';
   }
 })();
 </script>
+<script src="/marco.js"></script>
+<link rel="stylesheet" href="/marco.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/estilos.css">
 </head>
 <body>
+<div id="cargando" class="cargando" role="status" hidden>
+  <img src="/logo.svg" alt="" width="56" height="56">
+  <p><b>Abriendo la agenda…</b></p>
+  <p id="tarda" class="tarda" hidden>¿Tarda mucho? <a id="directo" href="/">Abrila de la forma común</a></p>
+</div>
 <header class="top">
   <div class="col">
     <a class="marca" href="/index.html"><img src="/logo-claro.svg" alt="">Anotá</a>
@@ -82,9 +89,11 @@ var destino = '', esLink = false;
 </footer>
 <script>
 if (destino) {
+  // anota.ar/r/<nombre> muestra la página de reservas adentro de esta (la barra sigue diciendo anota.ar).
   document.title = 'Reservar · Anotá';
-  document.getElementById('seguir').href = destino;
+  document.getElementById('seguir').href = RESERVAS + destino;
   document.getElementById('yendo').hidden = false;
+  abrirAnota({ exec: RESERVAS, buscar: destino, nombre: 'reservas' });
 } else {
   document.title = 'Página no encontrada · Anotá';
   document.getElementById(esLink ? 'malLink' : 'nada').hidden = false;
