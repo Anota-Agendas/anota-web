@@ -1,0 +1,13 @@
+/* anota.ar/app y anota.ar/r/<nombre>: la app ocupa toda la pantalla. */
+html.pagina-marco, .pagina-marco body { height: 100%; }
+.pagina-marco body { margin: 0; background: var(--crema); overflow: hidden; }
+.marco { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: var(--crema); }
+.cargando { position: fixed; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 24px 16px; text-align: center; background: var(--crema); color: #16303A; font-family: var(--font); }
+.cargando[hidden] { display: none; }
+.cargando img { width: 56px; height: 56px; animation: latido 1.4s ease-in-out infinite; }
+.cargando p { margin: 0; }
+.cargando .tarda { font-size: 15px; color: #55686F; max-width: 320px; }
+.cargando .tarda a { color: #0F4C5C; font-weight: 700; }
+@keyframes latido { 50% { transform: scale(.9); opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .cargando img { animation: none; } }
