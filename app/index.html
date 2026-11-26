@@ -24,7 +24,9 @@ abrirAnota({
   exec: 'https://script.google.com/macros/s/AKfycbzwaQiQ5L5yRTbaCGp66Nf1Csx-1I41_OgZkL6Ti5h-w5CDOh3zadcCVovk3POWGGdUEw/exec',
   buscar: location.search,
   nombre: 'agenda',
-  sinMarco: sinSesionEnMarco(),
+  // Por ahora la agenda se abre siempre de la forma común: dentro de anota.ar, Google no deja dar los permisos
+  // la primera vez y las cuentas nuevas quedaban trabadas en "Abriendo tu agenda" (26/11).
+  sinMarco: true,
   ruta: function (buscar) { return '/app/' + buscar; }
 });
 </script>
